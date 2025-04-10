@@ -53,8 +53,8 @@ for sentence in summary_sentences:
                 if remaining > 0:
                     summary_words.extend(sentence_words[:remaining])
                 break
-            summary_words.extend(sentence_words)
-            current_count += len(sentence_words)
+        summary_words.extend(sentence_words)
+        current_count += len(sentence_words)
         
 summary_text = ' '.join(summary_words)    
    
