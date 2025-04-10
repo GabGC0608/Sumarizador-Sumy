@@ -39,7 +39,7 @@ for index, filename in enumerate(os.listdir(input_folder), start=1):
             
         # Cria o parser
         try:
-            # Se não houver pontuação e o texto estiver com 1 sentença por linha, simulamos pontuação
+            # Se não houver pontuação e o texto estiver com 1 sentença por linha, colocamos a  pontuação
             if all("." not in line for line in text.splitlines()):
                 fake_text = ". ".join([line.strip() for line in text.splitlines() if line.strip()]) + "."
                 parser = PlaintextParser.from_string(fake_text, Tokenizer("portuguese"))
