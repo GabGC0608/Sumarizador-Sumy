@@ -5,7 +5,7 @@ from sumy.nlp.tokenizers import Tokenizer
 # from sumy.summarizers.text_rank import TextRankSummarizer as Summarizer
 # # LexRank (também baseado em grafos, usa TF-IDF)
 # from sumy.summarizers.lex_rank import LexRankSummarizer as Summarizer
-from sumy.summarizers.lsa import LsaSummarizer as Summarizer
+#from sumy.summarizers.lsa import LsaSummarizer as Summarizer
 # # Luhn (baseado em frequência de palavras e posição)
 # from sumy.summarizers.luhn import LuhnSummarizer as Summarizer
 # # Edmundson (requer configuração de palavras chave boas e ruins)
@@ -15,16 +15,15 @@ from sumy.summarizers.lsa import LsaSummarizer as Summarizer
 
 
 # Inicializa o resumidor
-summarizer = Summarizer(aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa)
+summarizer = Summarizer()
 
-text = (""
-)
+text = ("ADICIONAR O TEXTO A SER SUMARIZADO AQUI")
 # Cria o parser
 parser = PlaintextParser.from_string(text, Tokenizer("portuguese"))
 
     # Calcula o número de palavras desejado no resumo (50%) 
 total_words = len(text.split())
-target_words = max(1, round(total_words * 0.1))  # Pelo menos 1 palavra
+target_words = max(1, total_words-(round(total_words * 0.1)))  # Pelo menos 1 palavra
         
         # Gera o resumo com todas as sentenças primeiro
 summary_sentences = summarizer(parser.document, len(parser.document.sentences))
