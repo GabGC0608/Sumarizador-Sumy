@@ -44,14 +44,17 @@ summary_sentences = summarizer(parser.document, len(parser.document.sentences))
         # Constrói o resumo até atingir o número de palavras desejado
 summary_words = []
 current_count = 0
-        
+
+#Corta a sentença caso ela ultrapasse o limite de palavras 
 for sentence in summary_sentences:
-    sentence_words = str(sentence).split()
-    if current_count + len(sentence_words) > target_words:
-        summary_words.extend(sentence_words) 
-        break
-    summary_words.extend(sentence_words)
-    current_count += len(sentence_words)
+        sentence_words = str(sentence).split()
+        if current_count + len(sentence_words) > target_words:
+                remaining = target_words - current_count
+                if remaining > 0:
+                    summary_words.extend(sentence_words[:remaining])
+                break
+            summary_words.extend(sentence_words)
+            current_count += len(sentence_words)
         
 summary_text = ' '.join(summary_words)    
    
