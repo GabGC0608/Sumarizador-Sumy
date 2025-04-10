@@ -15,8 +15,8 @@ from sumy.nlp.tokenizers import Tokenizer
 
 
 # Caminhos para as pastas de entrada e saída
-input_folder = 'C:/Users/Gabriel/Desktop/MEU_ARTIGO/pastas dos canais/copia canais/testes com diferentes corpus/@RBtechinfo'
-output_folder = 'C:/Users/Gabriel/Desktop/MEU_ARTIGO/resultados/Sumy/90%/@RBtechinfo'
+input_folder = 'Diretório do input'
+output_folder = 'Diretório do output'
 os.makedirs(output_folder, exist_ok=True)
 
 # Inicializa o resumidor
@@ -53,7 +53,7 @@ for index, filename in enumerate(os.listdir(input_folder), start=1):
 
         # Calcula o número de palavras desejado no resumo (x%)
         total_words = len(text.split())
-        target_words = max(1, total_words-(round(total_words * 0.9)))  # Pelo menos 1 palavra// O 0.9 é o nível de compressao ajustavel
+        target_words = max(1, total_words-(round(total_words * 0.9)))  # Pelo menos 1 palavra// O 0.9 é o nível de compressao ajustavel(90% de compressão no caso)
         
         # Gera o resumo com todas as sentenças primeiro
         summary_sentences = summarizer(parser.document, len(parser.document.sentences))
