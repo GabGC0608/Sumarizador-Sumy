@@ -38,6 +38,4 @@ O sumarizador Edmundson não está disponivel nesse codigo
 Para executar o codigo voce deve ajustar os terminais de imput e output:
                     
     # Caminhos para as pastas de entrada e saída
-    input_folder = 'C:/Users/Gabriel/Desktop/MEU_ARTIGO/pastas dos canais/copia canais/testes com diferentes corpus/@RBtechinfo'
-    output_folder = 'C:/Users/Gabriel/Desktop/MEU_ARTIGO/resultados/Sumy/90%/@RBtechinfo'
-    os.makedirs(output_folder, exist_ok=True)
+   
