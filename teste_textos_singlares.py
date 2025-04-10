@@ -15,21 +15,9 @@ from sumy.summarizers.lsa import LsaSummarizer as Summarizer
 
 
 # Inicializa o resumidor
-summarizer = Summarizer()
+summarizer = Summarizer(aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa)
 
-text = ("life long learning sempre aprendendo com esses irmaos animada com a aprendizado uma sequencia de palavras que nem parecem ser no meu idioma "
-        "ceus kkkkkk. essa imersao vai ser dificil. excelente descricao do que sao os notebooks. formalizacao do codigo jogado. gosto tambem da possibilidade "
-        "de documentar e comunicar a solucao usando markdown. alura e legal mas e muito caro. a mensalidade fica dificil fazer. python parece ser o inicio de "
-        "alguma coisa ate porque to estudando isso no primeiro semestre. dai a gente entra num video que so fala palavras dificeis. deus me ajudaaaa. quero essa camiseta. "
-        "um video meio assustador pra quem nao entende de programacao. eles comecam a jogar monte de informacao que meros mortais nao entende sabe. poderia ser mais "
-        "simplificado para quem quer entender o que e python. em relacao aos games e natural que o python sejam bem mais familiar a jogos de rpg e pluzzes. "
-        "nao entendi porra nenhuma kkkkkk. man vcs estao no mesmo local pq a voz do guilherme esta tao ruim kssjsk. guilherme silveira e o professor mais brabo do alura. "
-        "voces tem curso de python. saio sem entender o que e python a partir desse video. ja criei meu primeiro hello worldpy. valeu alura continuem assim ensinando e aprendendo. "
-        "bom dia. feliz ano novo pra voces. entao eu queria muito entrar na area de programacao. poderia me ajudar por onde comecar cursos. vi esse anuncio de python e sera que "
-        "eu poderia comecar por ele ou voces me indicam outro ponto inicial. anos e tentando uma transicao de carreira. sempre fui pessima em matematica e raciocinio logico "
-        "mas estou tentando. tomara que eu consiga e tenha uma carreira a frente. deus abencoe a todos. ass monica. consigo invadir a nada com python. oi mi que legal saber que "
-        "esta comecando a estudar phyton. temos um artigo que pode te ajudar. da uma olhada historia sintaxe e um guia para iniciar na linguagem. oi denise tudo bem. chama a gente "
-        "na dm de alguma de nossas redes sociais que podemos verificar se podemos mandar algum mimo para."
+text = (""
 )
 # Cria o parser
 parser = PlaintextParser.from_string(text, Tokenizer("portuguese"))
