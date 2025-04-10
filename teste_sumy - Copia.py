@@ -2,10 +2,10 @@ import os
 from sumy.parsers.plaintext import PlaintextParser
 from sumy.nlp.tokenizers import Tokenizer
 # # TextRank (baseado em grafos, tipo PageRank)
-# from sumy.summarizers.text_rank import TextRankSummarizer as Summarizer
+#from sumy.summarizers.text_rank import TextRankSummarizer as Summarizer
 # # LexRank (também baseado em grafos, usa TF-IDF)
 # from sumy.summarizers.lex_rank import LexRankSummarizer as Summarizer
-# from sumy.summarizers.lsa import LsaSummarizer as Summarizer
+#from sumy.summarizers.lsa import LsaSummarizer as Summarizer
 # # Luhn (baseado em frequência de palavras e posição)
 # from sumy.summarizers.luhn import LuhnSummarizer as Summarizer
 # # Edmundson (requer configuração de palavras chave boas e ruins)
@@ -15,8 +15,8 @@ from sumy.nlp.tokenizers import Tokenizer
 
 
 # Caminhos para as pastas de entrada e saída
-input_folder = 'Diretório com os textos'
-output_folder = 'Diretório para salvar'
+input_folder = 'C:/Users/Gabriel/Desktop/MEU_ARTIGO/pastas dos canais/copia canais/testes com diferentes corpus/@RBtechinfo'
+output_folder = 'C:/Users/Gabriel/Desktop/MEU_ARTIGO/resultados/Sumy/90%/@RBtechinfo'
 os.makedirs(output_folder, exist_ok=True)
 
 # Inicializa o resumidor
@@ -39,14 +39,21 @@ for index, filename in enumerate(os.listdir(input_folder), start=1):
             
         # Cria o parser
         try:
-            parser = PlaintextParser.from_string(text, Tokenizer("portuguese"))
+            # Se não houver pontuação e o texto estiver com 1 sentença por linha, simulamos pontuação
+            if all("." not in line for line in text.splitlines()):
+                fake_text = ". ".join([line.strip() for line in text.splitlines() if line.strip()]) + "."
+                parser = PlaintextParser.from_string(fake_text, Tokenizer("portuguese"))
+            else:
+                parser = PlaintextParser.from_string(text, Tokenizer("portuguese"))
+           
+
         except:
             print(f"Erro ao processar: {filename}")
             continue
 
-        # Calcula o número de palavras desejado no resumo (50%)
+        # Calcula o número de palavras desejado no resumo (x%)
         total_words = len(text.split())
-        target_words = max(1, round(total_words * 0.1))  # Pelo menos 1 palavra
+        target_words = max(1, total_words-(round(total_words * 0.9)))  # Pelo menos 1 palavra// O 0.9 é o nível de compressao ajustavel
         
         # Gera o resumo com todas as sentenças primeiro
         summary_sentences = summarizer(parser.document, len(parser.document.sentences))
@@ -55,15 +62,17 @@ for index, filename in enumerate(os.listdir(input_folder), start=1):
         summary_words = []
         current_count = 0
         
+        #Corta a sentença caso ela ultrapasse o limite de palavras 
         for sentence in summary_sentences:
             sentence_words = str(sentence).split()
             if current_count + len(sentence_words) > target_words:
-                summary_words.extend(sentence_words) 
+                remaining = target_words - current_count
+                if remaining > 0:
+                    summary_words.extend(sentence_words[:remaining])
                 break
-                
             summary_words.extend(sentence_words)
             current_count += len(sentence_words)
-        
+
         summary_text = ' '.join(summary_words)
         
         # Verifica o resultado
